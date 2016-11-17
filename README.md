@@ -1,4 +1,3 @@
-[![Build Status](https://travis-ci.org/andela/healthchecks_asgards.svg?branch=master)](https://travis-ci.org/andela/healthchecks_asgards)
 # healthchecks
 
 ![Screenshot of Welcome page](/stuff/screenshots/welcome.png?raw=true "Welcome Page")
