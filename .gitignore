@@ -7,3 +7,4 @@ static-collected
 hc-venv/
 .DS_Store
 static/.DS_Store
+venv/
