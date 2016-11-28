@@ -3,7 +3,6 @@ from hc.accounts.models import Profile
 from hc.test import BaseTestCase
 from hc.accounts.models import Member
 from hc.api.models import Check
-from django.conf import settings
 
 
 
@@ -24,8 +23,8 @@ class ProfileTestCase(BaseTestCase):
 
         # And an email should have been sent
         self.assertEqual(len(mail.outbox), 1)
-        expected_subject = 'Set password on {0}'.format(getattr(settings, "SITE_NAME"))
-        self.assertEqual(mail.outbox[0].subject, expected_subject)
+        self.assertEqual(mail.outbox[0].subject, 'Set password on healthchecks.io')
+        self.assertIn("Hello,\n\nHere's a link to set a password for your account", mail.outbox[0].body)
         ### Assert that the token is set
         self.assertTrue(len(token) > 10)
 
@@ -44,7 +43,8 @@ class ProfileTestCase(BaseTestCase):
 
         ###Assert that the email was sent and check email content
         self.assertEqual(len(mail.outbox), 1)
-        message = mail.outbox[0]
+        self.assertEqual(mail.outbox[0].subject, 'Monthly Report')
+        self.assertIn('This is a monthly report sent by healthchecks.io', mail.outbox[0].body)
 
     def test_it_adds_team_member(self):
         self.client.login(username="alice@example.org", password="password")
