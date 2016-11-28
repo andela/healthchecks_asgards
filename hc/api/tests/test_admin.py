@@ -7,6 +7,7 @@ class ApiAdminTestCase(BaseTestCase):
     def setUp(self):
         super(ApiAdminTestCase, self).setUp()
         self.check = Check.objects.create(user=self.alice, tags="foo bar")
+
         ### Set Alice to be staff and superuser and save her :)
         self.alice.is_staff = True
         self.alice.is_superuser = True
@@ -19,3 +20,5 @@ class ApiAdminTestCase(BaseTestCase):
         ch.save()
 
         ### Assert for the push bullet
+        response = self.client.get("/admin/api/channel/")
+        self.assertContains(response, "Pushbullet")
