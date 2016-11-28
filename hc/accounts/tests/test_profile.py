@@ -1,5 +1,5 @@
 from django.core import mail
-
+from hc.accounts.models import Profile
 from hc.test import BaseTestCase
 from hc.accounts.models import Member
 from hc.api.models import Check
