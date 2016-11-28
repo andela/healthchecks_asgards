@@ -3,6 +3,7 @@ from django.core import mail
 from hc.test import BaseTestCase
 from hc.accounts.models import Member
 from hc.api.models import Check
+from django.conf import settings
 
 
 class ProfileTestCase(BaseTestCase):
@@ -17,6 +18,12 @@ class ProfileTestCase(BaseTestCase):
         # profile.token should be set now
         self.alice.profile.refresh_from_db()
         token = self.alice.profile.token
+        self.assertTrue(len(token) > 10)
+
+        # And an email should have been sent
+        self.assertEqual(len(mail.outbox), 1)
+        expected_subject = 'Set password on {0}'.format(getattr(settings, "SITE_NAME"))
+        self.assertEqual(mail.outbox[0].subject, expected_subject)
         ### Assert that the token is set
 
         ### Assert that the email was sent and check email content
