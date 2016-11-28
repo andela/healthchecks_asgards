@@ -20,6 +20,7 @@ class LoginTestCase(TestCase):
         assert r.status_code == 302
 
         ### Assert that a user was created
+<<<<<<< HEAD
         """ @marvin : 
         Create new instance of User 
         and check that it is authenticated. 
@@ -30,11 +31,15 @@ class LoginTestCase(TestCase):
         self.alice.save()
 
         self.assertTrue(self.alice.is_authenticated)
+=======
+        self.assertEqual(User.objects.count(), 1)
+>>>>>>> 8da8db087f343178d78cb4ea81d2f083bee78f9d
 
         # And email sent
         self.assertEqual(len(mail.outbox), 1)
         self.assertEqual(mail.outbox[0].subject, 'Log in to healthchecks.io')
         ### Assert contents of the email body
+<<<<<<< HEAD
         
         """ @marvin : 
         Call the send_mail function that's in the Mail module.
@@ -48,8 +53,14 @@ class LoginTestCase(TestCase):
 
         #self.assertNotEqual(len(mail.outbox[0].recipient_list), 0)
         #self.assertNotIn(mail.outbox[0].from_email, mail.outbox[0].recipient_list, msg = "Should not send yourself a copy of the client data.")
+=======
+        self.AssertEqual(mail.outbox[0].body, 'Hi go check out this link healthchecks.io')
+
+>>>>>>> 8da8db087f343178d78cb4ea81d2f083bee78f9d
 
         ### Assert that check is associated with the new user
+        re_check = Check.objects.get(code=check.code)
+        assert re_check.user
 
     def test_it_pops_bad_link_from_session(self):
         self.client.session["bad_link"] = True
