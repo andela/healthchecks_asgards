@@ -44,6 +44,14 @@ class ListChecksTestCase(BaseTestCase):
         self.assertEqual(len(checks), 2)
         ### Assert the checks Alice 1 and Alice 2's timeout, grace, ping_url, status,
         ### last_ping, n_pings and pause_url
+        #  ---- Checks for Alice 1 ----
+        self.assertEqual(checks["Alice 1"]["timeout"], 3600)
+        self.assertEqual(checks["Alice 1"]["grace"], 900)
+        self.assertEqual(checks["Alice 1"]["ping_url"], self.a1.url())
+        self.assertEqual(checks["Alice 1"]["status"], "new")
+        self.assertEqual(checks["Alice 1"]["last_ping"], self.now.isoformat())
+        self.assertEqual(checks["Alice 1"]["n_pings"], 1)
+        self.assertEqual(checks['Alice 1']['pause_url'], self.a1.to_dict()['pause_url'])
 
     def test_it_shows_only_users_checks(self):
         bobs_check = Check(user=self.bob, name="Bob 1")
