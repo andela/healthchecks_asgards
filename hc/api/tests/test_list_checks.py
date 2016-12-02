@@ -55,7 +55,7 @@ class ListChecksTestCase(BaseTestCase):
         self.assertEqual(checks["Alice 1"]["n_pings"], 1)
         self.assertEqual(checks['Alice 1']['pause_url'], self.a1.to_dict()['pause_url'])
 
-        #  ---- Checks for Alice 1 ----
+        #  ---- Checks for Alice 2 ----
         self.assertEqual(checks["Alice 2"]["timeout"], 86400)
         self.assertEqual(checks["Alice 2"]["grace"], 3600)
         self.assertEqual(checks["Alice 2"]["ping_url"], self.a2.url())
