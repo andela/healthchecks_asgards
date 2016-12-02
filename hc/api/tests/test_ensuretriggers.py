@@ -20,10 +20,12 @@ class EnsureTriggersTestCase(TestCase):
         check.refresh_from_db()
         assert check.alert_after is not None
         ### The above assert fails. Make it pass
+        #The assert passes because by now indexing h as occured due to the refresh_from_db above
 
         alert_after = check.alert_after
 
         check.last_ping += timedelta(days=1)
         check.save()
         check.refresh_from_db()
-        ### Assert that alert_after is lesser than the check's alert_after 
+        ### Assert that alert_after is lesser than the check's alert_after
+        self.assertTrue(alert_after < check.alert_after)
