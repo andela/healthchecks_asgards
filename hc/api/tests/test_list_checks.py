@@ -77,4 +77,5 @@ class ListChecksTestCase(BaseTestCase):
     def test_it_acccepts_api_key_in_the_request(self):
         # Send a GET request with a header containing the API key
         r = self.client.get("/api/v1/checks/", content_type="application/json", HTTP_X_API_KEY='abc')
-        self.assertEqual(r.status_code, 200, r.json())
+        r.json()
+        self.assertEqual(r.status_code, 200, data)
