@@ -41,6 +41,7 @@ class ListChecksTestCase(BaseTestCase):
 
         checks = {check["name"]: check for check in doc["checks"]}
         ### Assert the expected length of checks
+        self.assertEqual(len(checks), 2)
         ### Assert the checks Alice 1 and Alice 2's timeout, grace, ping_url, status,
         ### last_ping, n_pings and pause_url
 
