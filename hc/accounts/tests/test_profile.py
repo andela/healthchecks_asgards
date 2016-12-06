@@ -133,5 +133,5 @@ class ProfileTestCase(BaseTestCase):
         self.client.login(username="alice@example.org", password="password")
         form = {'revoke_api_key': ''}
         r = self.client.post("/accounts/profile/", form)
-        assert r.status_code == 200
+        self.assertEqual(r.status_code,200)
 
