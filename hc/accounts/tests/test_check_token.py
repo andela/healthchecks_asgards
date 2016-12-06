@@ -47,7 +47,4 @@ class CheckTokenTestCase(BaseTestCase):
         self.assertNotEqual(url,"/accounts/check_token/alice/secret-token/")
         self.assertRedirects(r, "/accounts/login/")
 
-    ### Any other tests?
 
-if __name__ == '__main__':
-    unittest()
