@@ -59,6 +59,7 @@ def login(request):
         if form.is_valid():
             email = form.cleaned_data["email"]
             password = form.cleaned_data["password"]
+
             if len(password):
                 user = authenticate(username=email, password=password)
                 if user is not None and user.is_active:
