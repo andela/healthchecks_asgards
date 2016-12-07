@@ -20,7 +20,7 @@ HOST = "localhost"
 SECRET_KEY = "---"
 DEBUG = True
 ALLOWED_HOSTS = []
-DEFAULT_FROM_EMAIL = 'healthchecks@example.org'
+DEFAULT_FROM_EMAIL = 'asgards@healthchecks.com'
 USE_PAYMENTS = False
 
 
@@ -145,7 +145,8 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 COMPRESS_OFFLINE = True
 
-EMAIL_BACKEND = "djmail.backends.default.EmailBackend"
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_API_KEY = "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"
 
 # Slack integration -- override these in local_settings
 SLACK_CLIENT_ID = None
