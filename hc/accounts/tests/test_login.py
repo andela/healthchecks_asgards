@@ -26,7 +26,7 @@ class LoginTestCase(TestCase):
 
         #  And email sent
         self.assertEqual(len(mail.outbox), 1)
-        self.assertEqual(mail.outbox[0].subject, 'Log in to healthchecks.io')
+        self.assertEqual(mail.outbox[0].subject, 'Log in to healthchecks_asgards')
         ### Assert contents of the email body
 
         self.assertIn("Hello,\n\nTo log into healthchecks.io, please open the link below:", mail.outbox[0].body)
