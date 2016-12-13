@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 import os
 import warnings
 import dj_database_url
+import sendgrid
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -146,7 +147,9 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 COMPRESS_OFFLINE = True
 
 EMAIL_BACKEND = "sgbackend.SendGridBackend"
-SENDGRID_API_KEY = "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"
+SG = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+
+
 
 # Slack integration -- override these in local_settings
 SLACK_CLIENT_ID = None
