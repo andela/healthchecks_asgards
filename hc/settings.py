@@ -147,7 +147,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 COMPRESS_OFFLINE = True
 
 EMAIL_BACKEND = "sgbackend.SendGridBackend"
-SG = sendgrid.SendGridAPIClient(apikey=os.environ.get('SENDGRID_API_KEY'))
+SENDGRID_API_KEY = os.environ.get('SENDGRID_API_KEY')
 
 
 
